@@ -11,7 +11,9 @@ Verificare che sia installato:
 docker -v
 
 2) Installare il pacchetto docker-compose:
+
 https://docs.docker.com/compose/install/
+
 Questo pacchetto è già incluso per gli utenti mac os x nel software docker. Questa installazione si rende necessaria solamente in ambienti linux
 
 
@@ -21,7 +23,9 @@ Questi saranno in punti coperti nel tutorial
 https://docs.docker.com/get-started/
 
 2) concetti base docker (container, services, stack, hub)
+
 https://www.slideshare.net/valix85/introduzione-a-docker-maggio-2017-ita?qid=2689113a-d449-4eb8-be13-fc6a21c6f3d6&v=&b=&from_search=4
+
 https://hub.docker.com/
 
 3) realizzazione di un container con software python e sharing attraverso hub.docker.com
@@ -34,7 +38,7 @@ Task da eseguire:
 - run
 - build
 - tagging
-- upload/sharing
+- push/sharing
 
 4) configurazione di uno stack lamp
 

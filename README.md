@@ -18,9 +18,10 @@ Questo pacchetto è già incluso per gli utenti mac os x nel software docker. Qu
 Questi saranno in punti coperti nel tutorial
 
 1) differenza tra virtual machine (vagrant) e docker
-2) concetti base docker (container, services, stack, hub)
-tps://www.slideshare.net/valix85/introduzione-a-docker-maggio-2017-ita?qid=2689113a-d449-4eb8-be13-fc6a21c6f3d6&v=&b=&from_search=4
 https://docs.docker.com/get-started/
+
+2) concetti base docker (container, services, stack, hub)
+https://www.slideshare.net/valix85/introduzione-a-docker-maggio-2017-ita?qid=2689113a-d449-4eb8-be13-fc6a21c6f3d6&v=&b=&from_search=4
 https://hub.docker.com/
 
 3) realizzazione di un container con software python e sharing attraverso hub.docker.com

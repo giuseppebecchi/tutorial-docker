@@ -20,25 +20,37 @@ Questo pacchetto è già incluso per gli utenti mac os x nel software docker. Qu
 Questi saranno in punti coperti nel tutorial
 
 1) differenza tra virtual machine (vagrant) e docker
-https://docs.docker.com/get-started/
-
-2) concetti base docker (container, services, stack, hub)
-
+Prime 20 slide
 https://www.slideshare.net/valix85/introduzione-a-docker-maggio-2017-ita?qid=2689113a-d449-4eb8-be13-fc6a21c6f3d6&v=&b=&from_search=4
 
+
+2) concetti base docker (container, services, stack, hub)
+https://docs.docker.com/get-started/
 https://hub.docker.com/
+
 
 3) realizzazione di un container con software python e sharing attraverso hub.docker.com
 https://docs.docker.com/get-started/part2/
+https://docs.docker.com/get-started/part3/
 
 File esercitazione: 3_container_python
 
 Task da eseguire:
-- dockerfile
-- run
-- build
-- tagging
-- push/sharing
+- analizzare dockerfile
+- build -t hellodocker .
+- docker run -p 4000:80 hellodocker
+- docker tag hellodocker [IL_TUO_USERNAME]/hellodocker:1.0
+- docker push [IL_TUO_USERNAME]/hellodocker:1.0
+- docker run -p 4010:80 [USERNAME_DI_UN_ALTRO]/hellodocker:1.0
+
+- docker-compose up
+
+- docker swarm init
+- docker stack deploy -c docker-compose-ext.yml getstartedlab
+- docker stack rm getstartedlab
+- docker swarm leave --force
+
+
 
 4) configurazione di uno stack lamp
 

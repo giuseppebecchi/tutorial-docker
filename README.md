@@ -3,7 +3,9 @@ Tutorial di base per docker
 
 
 ## Prequisiti necessari per seguire il tutorial:
+
 1) Installare docker sui computer che utilizzerete durante il tutorial:
+
 https://www.docker.com/community-edition#/download
 Verificare che sia installato:
 docker -v
@@ -11,8 +13,11 @@ docker -v
 2) Installare il pacchetto docker-compose:
 
 https://docs.docker.com/compose/install/
+Questo pacchetto è già incluso per gli utenti mac os x nel software docker del punto precedente. Questa installazione si rende necessaria solamente in ambienti linux
 
-Questo pacchetto è già incluso per gli utenti mac os x nel software docker. Questa installazione si rende necessaria solamente in ambienti linux
+3) Registrazione su https://hub.docker.com/
+
+4) Un editor di testo. Si consiglia Pycharm (che utilizzerò io) per la parte su python. Comunque ai fini dell'esercitazione va bene un editor qualsiasi.
 
 
 ## Questi saranno in punti coperti nel tutorial

@@ -108,35 +108,54 @@ http://localhost:8080/
 
 
 
-docker exec -it 4stacklamp_web_1 bash
+docker exec -it ____nome_container___ bash
 
 Testare volumi per:
-- persistenza dei dati
-- condivisione dati tra container
+- persistenza dei dati (db)
+- condivisione dati iniziali startup container (db)
+- vedere documentazione https://hub.docker.com/_/mysql
+
 - codice sincronizzato per sviluppo
 
 ### 5) configurazione di uno stack con applicativo django
 https://docs.docker.com/compose/django/
 File esercitazione: 5_stack_django
 
-Task da eseguire:
+Task da eseguire (se non funziona sudo):
 docker-compose run web django-admin.py startproject composeexample .
 
 Editare composeexample/settings.py
 
 DATABASES = {
     'default': {
-        'NAME': 'django',
-        'ENGINE': 'django.db.backends.mysql',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'db'
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
 
-docker exec -it 5stackdjangotest_web_1 bash
-python manage.py migrate
-python manage.py createsuperuser
+
+
+#avviare il server
+docker-compose up -d
+
+#verificare che sia funzionante
+http://localhost:8000/
+
+
+#eseguire un comando dall'interno del container
+docker exec -it 5_stack_django_web_1 bash
+python manage.py help
+exit
+
+#eseguire un comando dall'esterno
+docker exec 5_stack_django_web_1 python manage.py help
+docker exec 5_stack_django_web_1 python manage.py migrate
+
+
 
 
 

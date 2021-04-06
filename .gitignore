@@ -67,6 +67,7 @@ target/
 3_container_python/.env
 5_stack_django_test/*
 4_stack_lamp/data/mysql/*
+
 5_stack_django/composeexample/*
-5_stack_django/mysql-data/*
-5_stack_django/db.sqlite3
+5_stack_django/data
+5_stack_django/manage.py

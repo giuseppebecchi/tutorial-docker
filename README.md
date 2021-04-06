@@ -6,7 +6,7 @@ Tutorial di base per docker
 
 1) Installare docker sui computer che utilizzerete durante il tutorial:
 
-https://www.docker.com/community-edition#/download
+https://docs.docker.com/get-docker/
 Verificare che sia installato:
 docker -v
 
@@ -17,7 +17,7 @@ Questo pacchetto è già incluso per gli utenti mac os x nel software docker del
 
 3) Registrazione su https://hub.docker.com/
 
-4) Un editor di testo. Si consiglia Pycharm (che utilizzerò io) per la parte su python. Comunque ai fini dell'esercitazione va bene un editor qualsiasi.
+4) Un editor di testo. Si consiglia Pycharm Professional per la parte su python. Comunque ai fini di questa esercitazione va bene un editor qualsiasi.
 
 
 ## Questi saranno in punti coperti nel tutorial
@@ -27,31 +27,69 @@ Prime 20 slide
 https://www.slideshare.net/valix85/introduzione-a-docker-maggio-2017-ita?qid=2689113a-d449-4eb8-be13-fc6a21c6f3d6&v=&b=&from_search=4
 
 
-### 2) concetti base docker (container, services, stack, hub)
+### 2) concetti base docker (images, container, network, stack, hub)
 https://docs.docker.com/get-started/
 https://hub.docker.com/
 
 
+
+
 ### 3) realizzazione di un container con software python e sharing attraverso hub.docker.com
-https://docs.docker.com/get-started/part2/
-https://docs.docker.com/get-started/part3/
+
+https://docs.docker.com/language/python/
 
 File esercitazione: 3_container_python
 
 Task da eseguire:
 - analizzare dockerfile
-- build -t hellodocker .
-- docker run -p 4000:80 hellodocker
-- docker tag hellodocker [IL_TUO_USERNAME]/hellodocker:1.0
-- docker push [IL_TUO_USERNAME]/hellodocker:1.0
-- docker run -p 4010:80 [USERNAME_DI_UN_ALTRO]/hellodocker:1.0
+- docker build --t python-docker .
+- docker images ls
+
+#nessuna porta esposta
+- docker run  python-docker
+
+- docker run -p 5000:5000 python-docker
+
+- docker run -p 5010:5000 python-docker
+
+- docker run -p 5010:5000 -d python-docker
+
+- docker ps
 
 - docker-compose up
 
-- docker swarm init
-- docker stack deploy -c docker-compose-ext.yml getstartedlab
-- docker stack rm getstartedlab
-- docker swarm leave --force
+- docker-compose up -d
+
+- docker-compose stop
+- docker-compose up down
+
+#rinominare
+.env.example -> .env
+
+#decommentare linee virtual env nel docker-compose
+
+#verificare lettura della variabile di ambiente
+- docker-compose up -d
+
+
+
+#condivisione immagini su hub docker
+
+- aprire https://hub.docker.com/
+
+- docker tag python-docker [IL_TUO_USERNAME]/python-docker
+
+- docker login
+
+- docker push [IL_TUO_USERNAME]/python-docker
+
+- docker run -p 5020:5000 ciuster/python-docker
+
+
+
+
+
+
 
 
 
@@ -60,7 +98,15 @@ Task da eseguire:
 File esercitazione: 4_stack_lamp
 
 Task da eseguire:
-docker-compose up
+docker-compose up -d
+
+Verificare:
+web
+http://localhost:4000/
+adminer
+http://localhost:8080/
+
+
 
 docker exec -it 4stacklamp_web_1 bash
 

@@ -1,26 +1,33 @@
 version: '3.1'
 
 services:
+
+  web:
+    build: ./web/
+    ports:
+        - "4000:80"
+
+    #volume per tenere sincronizzato il codice su macchina dev
+    #volumes:
+    #  - ./web/:/var/www/html/
+
   db:
     image: mysql
     restart: always
     environment:
       MYSQL_DATABASE: root
-      MYSQL_ROOT_PASSWORD: pippo
+      MYSQL_ROOT_PASSWORD: nel2057cambiami
+      MYSQL_DATABASE: example
 
     volumes:
-      - ./db_persistent_data:/var/lib/mysql
+      #volume per la persistenza dei dati
+      - ./data/mysql:/var/lib/mysql
+
+      #volume con il dump iniziale del database
+      #- ./sql:/docker-entrypoint-initdb.d
 
   adminer:
     image: adminer
     restart: always
     ports:
       - 8080:8080
-
-  web:
-    image: webdocker
-    #build: .
-    ports:
-        - "4000:80"
-    volumes:
-      - ./web/:/var/www/html/

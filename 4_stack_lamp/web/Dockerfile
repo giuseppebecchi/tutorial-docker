@@ -1,7 +1,6 @@
-FROM php:7.0-apache
+FROM php:7.4-apache
 
-RUN apt-get install -y \
-        nano
+RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
 
 COPY . /var/www/html/
 

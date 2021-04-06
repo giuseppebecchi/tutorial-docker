@@ -1,6 +1,16 @@
 version: '3.1'
 
 services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
   db:
     image: mysql
     restart: always
@@ -9,17 +19,6 @@ services:
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - ./mysql-data:/var/lib/mysql
-
-  web:
-    build: .
-    image: web:test-django
-    command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/code
-    ports:
-      - "8000:8000"
-    depends_on:
-      - db
 
   adminer:
     image: adminer

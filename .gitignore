@@ -64,5 +64,9 @@ target/
 .idea/
 
 # Created by .ignore support plugin (hsz.mobi)
+3_container_python/.env
 5_stack_django_test/*
-4_stack_lamp/db_persistent_data/*
+4_stack_lamp/data/mysql/*
+5_stack_django/composeexample/*
+5_stack_django/mysql-data/*
+5_stack_django/db.sqlite3

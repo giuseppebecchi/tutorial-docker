@@ -23,19 +23,15 @@ Questo pacchetto è già incluso per gli utenti mac os x nel software docker del
 ## Questi saranno in punti coperti nel tutorial
 
 ### 1) differenza tra virtual machine (vagrant) e docker
-Prime 20 slide
-https://www.slideshare.net/valix85/introduzione-a-docker-maggio-2017-ita?qid=2689113a-d449-4eb8-be13-fc6a21c6f3d6&v=&b=&from_search=4
-
-
 ### 2) concetti base docker (images, container, network, stack, hub)
 https://docs.docker.com/get-started/
 https://hub.docker.com/
 
-
+Maggiori approfondimenti:
+https://www.slideshare.net/valix85/introduzione-a-docker-maggio-2017-ita?qid=2689113a-d449-4eb8-be13-fc6a21c6f3d6&v=&b=&from_search=4
 
 
 ### 3) realizzazione di un container con software python e sharing attraverso hub.docker.com
-
 https://docs.docker.com/language/python/
 
 File esercitazione: 3_container_python
@@ -58,10 +54,13 @@ Task da eseguire:
 
 - docker-compose up
 
+- Ctrl + c per fermarlo
+
 - docker-compose up -d
 
 - docker-compose stop
-- docker-compose up down
+
+- docker-compose down
 
 #rinominare
 .env.example -> .env

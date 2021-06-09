@@ -192,25 +192,24 @@ docker exec -it 5_stack_django_web_1 python manage.py startapp art
 
 #aggiungerla in settings.py
 
-INSTALLED_APPS = [
+    INSTALLED_APPS = [
+    
+        ....
+        ....,
+        'art',
 
-    ....
-    ....,
-    'art',
-
-]
+    ]
 
 
 #creare un modello nel file art/models.py
-'''
-class Item(models.Model):
-    title = models.CharField(max_length = 150,null=True,blank=True)
-    code = models.CharField(max_length = 150,null=True,blank=True)
-    description = models.TextField(null=True,blank=True)
 
-    def __str__(self):
-        return str(self.title)
-'''
+    class Item(models.Model):
+        title = models.CharField(max_length = 150,null=True,blank=True)
+        code = models.CharField(max_length = 150,null=True,blank=True)
+        description = models.TextField(null=True,blank=True)
+
+        def __str__(self):
+            return str(self.title)
 
 #creare il file di migrazione ed effettuare la migrazione per creare le tabelle in DB
 docker exec -it 5_stack_django_web_1 python manage.py makemigrations

@@ -17,7 +17,7 @@ Questo pacchetto è già incluso per gli utenti mac os x nel software docker del
 
 3) Registrazione su https://hub.docker.com/
 
-4) Un editor di testo. Si consiglia Pycharm Professional per la parte su python. Comunque ai fini di questa esercitazione va bene un editor qualsiasi.
+4) Un editor di testo. Si consiglia Pycharm (Community o Professional) per la parte su python. Comunque ai fini di questa esercitazione va bene un editor qualsiasi.
 
 
 ## Questi saranno in punti coperti nel tutorial

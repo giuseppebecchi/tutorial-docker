@@ -97,6 +97,7 @@ Importante per personalizzare le password/key e per configurare il comportamento
 ##Esercitazione che potete provare a fare:
 
 Vedere com'è documentata l'immagine ufficiale docker di wordpress:
+
 https://hub.docker.com/_/wordpress
 
 Come avviare lo stack seguendo la documentazione (con il docker-compose)
@@ -112,9 +113,10 @@ Task da eseguire:
 docker-compose up -d
 
 Verificare:
-web
+web:
 http://localhost:4000/
-adminer
+
+adminer:
 http://localhost:8080/
 
 
@@ -122,9 +124,13 @@ Come entrare e ispezionare un container in esecuzione:
 
 docker exec -it ____nome_container___ bash
 
+
 Testare volumi per:
+
 - persistenza dei dati (db)
+
 - condivisione dati iniziali startup container (db)
+
 - vedere documentazione https://hub.docker.com/_/mysql
 
 - codice sincronizzato per sviluppo (decommentare volume nel container web)
@@ -137,6 +143,7 @@ https://docs.docker.com/compose/django/
 File esercitazione: 5_stack_django
 
 Task da eseguire (se non funziona sudo):
+
 docker-compose run web django-admin startproject composeexample .
 
 
@@ -147,16 +154,16 @@ Vengono creati:
 
 Editare composeexample/settings.py
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',
-        'PORT': 5432,
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'postgres',
+            'USER': 'postgres',
+            'PASSWORD': 'postgres',
+            'HOST': 'db',
+            'PORT': 5432,
+        }
     }
-}
 
 
 
@@ -193,7 +200,7 @@ docker exec -it 5_stack_django_web_1 python manage.py startapp art
 #aggiungerla in settings.py
 
     INSTALLED_APPS = [
-    
+
         ....
         ....,
         'art',
@@ -212,17 +219,19 @@ docker exec -it 5_stack_django_web_1 python manage.py startapp art
             return str(self.title)
 
 #creare il file di migrazione ed effettuare la migrazione per creare le tabelle in DB
+
 docker exec -it 5_stack_django_web_1 python manage.py makemigrations
+
 docker exec -it 5_stack_django_web_1 python manage.py migrate
 
 verificare nell'adminer la creazione della nuova tabella
 
 
 # configurare l'area amministrativa per questo oggetto nel file art/admin.py
-'''
-from .models import Item
-admin.site.register(Item)
-'''
+
+    from .models import Item
+    admin.site.register(Item)
+
 
 verificare nell'area amministrativa la gestione del nuovo tipo di oggetti
 

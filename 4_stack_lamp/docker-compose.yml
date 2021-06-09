@@ -15,9 +15,10 @@ services:
     image: mysql
     restart: always
     environment:
-      MYSQL_DATABASE: root
-      MYSQL_ROOT_PASSWORD: nel2057cambiami
+      MYSQL_ROOT_PASSWORD: nel3045cambiami
       MYSQL_DATABASE: example
+      MYSQL_USER: example
+      MYSQL_PASSWORD: example
 
     volumes:
       #volume per la persistenza dei dati

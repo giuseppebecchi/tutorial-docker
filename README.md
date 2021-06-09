@@ -38,7 +38,7 @@ File esercitazione: 3_container_python
 
 Task da eseguire:
 - analizzare dockerfile
-- docker build --t python-docker .
+- docker build --tag python-docker .
 - docker images ls
 
 #nessuna porta esposta

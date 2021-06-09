@@ -3,8 +3,13 @@ services:
   web:
     # replace username/repo:tag with your name and image details
     image: python-docker
+
+    # image: python-docker potrebbe essere sostituita anche con questa riga per fare automaticamente un build del dockerfile nella stessa cartella
+    #build: ./
+
     ports:
       - "5000:5000"
+
     #env_file:
     #  - ./.env
 

@@ -1,8 +1,11 @@
+<html>
+<h1>Prova pagina php</h1>
 <?php
 $servername = "db";
 $username = "root";
-$password = "nel2057cambiami";
+$password = "nel3045cambiami";
 $dbname = "example";
+
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -24,3 +27,4 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 ?>
+</html>

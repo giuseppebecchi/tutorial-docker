@@ -52,6 +52,11 @@ Task da eseguire:
 
 - docker ps
 
+- docker logs -f [NAME o CONTAINER ID]
+
+- docker stop [NAME o CONTAINER ID]
+
+
 - docker-compose up
 
 - Ctrl + c per fermarlo
@@ -67,9 +72,11 @@ Task da eseguire:
 
 #decommentare linee virtual env nel docker-compose
 
+
 #verificare lettura della variabile di ambiente
 - docker-compose up -d
 
+Importante per personalizzare le password/key e per configurare il comportamento dei containers.
 
 
 #condivisione immagini su hub docker
@@ -87,7 +94,12 @@ Task da eseguire:
 
 
 
+##Esercitazione che potete provare a fare:
 
+Vedere com'è documentata l'immagine ufficiale docker di wordpress:
+https://hub.docker.com/_/wordpress
+
+Come avviare lo stack seguendo la documentazione (con il docker-compose)
 
 
 
@@ -106,6 +118,7 @@ adminer
 http://localhost:8080/
 
 
+Come entrare e ispezionare un container in esecuzione:
 
 docker exec -it ____nome_container___ bash
 
@@ -114,14 +127,23 @@ Testare volumi per:
 - condivisione dati iniziali startup container (db)
 - vedere documentazione https://hub.docker.com/_/mysql
 
-- codice sincronizzato per sviluppo
+- codice sincronizzato per sviluppo (decommentare volume nel container web)
 
-### 5) configurazione di uno stack con applicativo django
+
+docker-compose down
+
+### 5) configurazione di uno stack con applicativo django (https://www.djangoproject.com/)
 https://docs.docker.com/compose/django/
 File esercitazione: 5_stack_django
 
 Task da eseguire (se non funziona sudo):
-docker-compose run web django-admin.py startproject composeexample .
+docker-compose run web django-admin startproject composeexample .
+
+
+Vengono creati:
+1) cartella composeexample
+2) file manage.py
+
 
 Editare composeexample/settings.py
 
@@ -152,7 +174,64 @@ exit
 
 #eseguire un comando dall'esterno
 docker exec 5_stack_django_web_1 python manage.py help
+
+
+#eseguire il comando migrate per inizializzare il DB con le tabelle di base di python
 docker exec 5_stack_django_web_1 python manage.py migrate
+
+
+#creare un utente admin
+docker exec 5_stack_django_web_1 python manage.py createsuperuser
+
+
+#creare una APPLICATION dal nome "art"
+docker exec -it 5_stack_django_web_1 python manage.py startapp art
+
+-> viene creata la cartella art
+
+
+#aggiungerla in settings.py
+
+INSTALLED_APPS = [
+
+    ....
+    ....,
+    'art',
+
+]
+
+
+#creare un modello nel file art/models.py
+'''
+class Item(models.Model):
+    title = models.CharField(max_length = 150,null=True,blank=True)
+    code = models.CharField(max_length = 150,null=True,blank=True)
+    description = models.TextField(null=True,blank=True)
+
+    def __str__(self):
+        return str(self.title)
+'''
+
+#creare il file di migrazione ed effettuare la migrazione per creare le tabelle in DB
+docker exec -it 5_stack_django_web_1 python manage.py makemigrations
+docker exec -it 5_stack_django_web_1 python manage.py migrate
+
+verificare nell'adminer la creazione della nuova tabella
+
+
+# configurare l'area amministrativa per questo oggetto nel file art/admin.py
+'''
+from .models import Item
+admin.site.register(Item)
+'''
+
+verificare nell'area amministrativa la gestione del nuovo tipo di oggetti
+
+
+
+
+
+
 
 
 

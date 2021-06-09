@@ -24,7 +24,7 @@ services:
       #volume per la persistenza dei dati
       - ./data/mysql:/var/lib/mysql
 
-      #volume con il dump iniziale del database
+      #volume con il dump iniziale del database.
       #- ./sql:/docker-entrypoint-initdb.d
 
   adminer:

@@ -8,8 +8,8 @@ services:
         - "4000:80"
 
     #volume per tenere sincronizzato il codice su macchina dev
-    #volumes:
-    #  - ./web/:/var/www/html/
+    volumes:
+      - ./web/:/var/www/html/
 
   db:
     image: mysql

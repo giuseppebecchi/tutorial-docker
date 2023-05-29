@@ -1,5 +1,33 @@
 <html>
-<h1>Prova pagina php</h1>
+<h1>Prova pagina php PROVIAMO CON PIU' CONVINZIONE</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <?php
 $servername = "db";
 $username = "root";

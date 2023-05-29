@@ -14,7 +14,7 @@ RUN pip3 install -r requirements.txt
 COPY . .
 
 # Define environment variable
-ENV NAME World_Becchi_ok
+ENV NAME World_PPM_2023_ok
 
 # Run app.py when the container launches
 CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]

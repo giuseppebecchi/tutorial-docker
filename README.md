@@ -179,16 +179,21 @@ docker exec -it 5_stack_django_web_1 bash
 python manage.py help
 exit
 
-#eseguire un comando dall'esterno
+#eseguire un comando dall'esterno sul container con docker exec
 docker exec 5_stack_django_web_1 python manage.py help
+
+
+#eseguire un comando con docker-compose
+docker-compose exec web python manage.py help
 
 
 #eseguire il comando migrate per inizializzare il DB con le tabelle di base di python
 docker exec 5_stack_django_web_1 python manage.py migrate
 
 
+
 #creare un utente admin
-docker exec 5_stack_django_web_1 python manage.py createsuperuser
+docker exec -it 5_stack_django_web_1 python manage.py createsuperuser
 
 
 #creare una APPLICATION dal nome "art"

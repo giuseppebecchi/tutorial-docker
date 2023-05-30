@@ -154,16 +154,17 @@ Vengono creati:
 
 Editare composeexample/settings.py
 
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'postgres',
-            'USER': 'postgres',
-            'PASSWORD': 'postgres',
-            'HOST': 'db',
-            'PORT': 5432,
-        }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_NAME'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': 'db',
+        'PORT': 5432,
     }
+}
 
 
 
@@ -189,7 +190,6 @@ docker-compose exec web python manage.py help
 
 #eseguire il comando migrate per inizializzare il DB con le tabelle di base di python
 docker exec 5_stack_django_web_1 python manage.py migrate
-
 
 
 #creare un utente admin

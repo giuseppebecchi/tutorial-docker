@@ -4,7 +4,7 @@ services:
     # replace username/repo:tag with your name and image details
     image: python-docker
 
-    # image: python-docker potrebbe essere sostituita anche con questa riga per fare automaticamente un build del dockerfile nella stessa cartella
+    # image: python-docker can be substituted by this build (using the Dockerfile in the same folder)
     #build: ./
 
     ports:

@@ -1,4 +1,5 @@
 # Use an official Python runtime as a parent image
+# check the available tags at https://hub.docker.com/_/python/tags
 FROM python:3.7-slim-buster
 
 # Set the working directory to /app
@@ -14,7 +15,7 @@ RUN pip3 install -r requirements.txt
 COPY . .
 
 # Define environment variable
-ENV NAME World_PPM_2023_ok
+ENV NAME PPM
 
 # Run app.py when the container launches
 CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]

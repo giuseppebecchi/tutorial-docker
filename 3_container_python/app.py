@@ -10,9 +10,9 @@ app = Flask(__name__)
 def hello():
 
     html = "<h3>Hello {name}!</h3>" \
-           "<b>Parola d'ordine:</b> {paroladordine}"
+           "<b>Password:</b> {my_password}"
     return html.format(
         name=os.getenv("NAME", "world"),
-        paroladordine=os.getenv("PAROLADORDINE", "Il fosso si salta senza rincorsa e la signora cammina con la borsa")
+        my_password=os.getenv("PASSWORD", "Doh, you didn't set the password in the environment variable!")
     )
 

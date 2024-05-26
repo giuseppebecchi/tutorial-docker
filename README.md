@@ -30,6 +30,12 @@ https://hub.docker.com/
 Maggiori approfondimenti:
 https://www.slideshare.net/valix85/introduzione-a-docker-maggio-2017-ita?qid=2689113a-d449-4eb8-be13-fc6a21c6f3d6&v=&b=&from_search=4
 
+Eseguire il container dell'immagine Docker "Hello World"
+
+Eseguire il container dell'immagine Docker "Nginx" e notare il processo di aggiunta delle pagine web.
+
+Task da eseguire:
+- aggiungere pagine web e fare nuovo deploy.
 
 ### 3) realizzazione di un container con software python e sharing attraverso hub.docker.com
 https://docs.docker.com/language/python/
@@ -92,6 +98,15 @@ Importante per personalizzare le password/key e per configurare il comportamento
 - docker run -p 5020:5000 ciuster/python-docker
 
 
+File esercitazione 3b_container_python_libs
+
+Task da eseguire:
+- analizzare dockerfile
+- docker build --tag python-docker-libs .
+- docker run -p 5030:5000 python-docker-libs
+- aprire un browser e andare su http://localhost:5030/
+
+Questo progetto è simile al precedente, ma aggiunge una libreria esterna (OpenCV) e installa con apt-get le dipendenze; inoltre il codice della app Flask adesso è separato da Dockerfile..
 
 
 ##Esercitazione che potete provare a fare:

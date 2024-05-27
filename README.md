@@ -184,35 +184,42 @@ Editare composeexample/settings.py
 
 
 #avviare il server
-docker-compose up -d
+
+    docker-compose up -d
 
 #verificare che sia funzionante
 http://localhost:8000/
 
 
 #eseguire un comando dall'interno del container
-docker exec -it 5_stack_django_web_1 bash
-python manage.py help
-exit
+
+    docker exec -it 5_stack_django-web-1 bash
+    python manage.py help
+    exit
 
 #eseguire un comando dall'esterno sul container con docker exec
-docker exec 5_stack_django_web_1 python manage.py help
+
+    docker exec 5_stack_django-web-1 python manage.py help
 
 
 #eseguire un comando con docker-compose
-docker-compose exec web python manage.py help
+
+    docker-compose exec web python manage.py help
 
 
 #eseguire il comando migrate per inizializzare il DB con le tabelle di base di python
-docker exec 5_stack_django_web_1 python manage.py migrate
+
+    docker exec 5_stack_django-web-1 python manage.py migrate
 
 
 #creare un utente admin
-docker exec -it 5_stack_django_web_1 python manage.py createsuperuser
+
+    docker exec -it 5_stack_django-web-1 python manage.py createsuperuser
 
 
 #creare una APPLICATION dal nome "art"
-docker exec -it 5_stack_django_web_1 python manage.py startapp art
+
+    docker exec -it 5_stack_django-web-1 python manage.py startapp art
 
 -> viene creata la cartella art
 
@@ -231,18 +238,17 @@ docker exec -it 5_stack_django_web_1 python manage.py startapp art
 #creare un modello nel file art/models.py
 
     class Item(models.Model):
-        title = models.CharField(max_length = 150,null=True,blank=True)
-        code = models.CharField(max_length = 150,null=True,blank=True)
-        description = models.TextField(null=True,blank=True)
+        title = models.CharField(max_length=150, null=True, blank=True)
+        code = models.CharField(max_length=150, null=True, blank=True)
+        description = models.TextField(null=True, blank=True)
 
         def __str__(self):
             return str(self.title)
 
 #creare il file di migrazione ed effettuare la migrazione per creare le tabelle in DB
 
-docker exec -it 5_stack_django_web_1 python manage.py makemigrations
-
-docker exec -it 5_stack_django_web_1 python manage.py migrate
+    docker exec -it 5_stack_django-web-1 python manage.py makemigrations
+    docker exec -it 5_stack_django-web-1 python manage.py migrate
 
 verificare nell'adminer la creazione della nuova tabella
 

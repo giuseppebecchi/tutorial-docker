@@ -1,6 +1,6 @@
 <html>
 <h1>Query the MySQL DB.</h1>
-<h2>Did you activate the volume to improt the SQL dump?</h2>
+<h2>Did you activate the volume to import the SQL dump?</h2>
 <h3>If not <a href="http://localhost:8088">click here</a> to open the Adminer interface and import the dump.</h3>
 
 <?php

@@ -8,7 +8,8 @@ Tutorial di base per docker
 
 https://docs.docker.com/get-docker/
 Verificare che sia installato:
-docker -v
+
+    docker -v
 
 2) Installare il pacchetto docker-compose:
 
@@ -253,7 +254,7 @@ http://localhost:8000/
 verificare nell'adminer la creazione della nuova tabella
 
 
-# configurare l'area amministrativa per questo oggetto nel file art/admin.py
+#configurare l'area amministrativa per questo oggetto nel file art/admin.py
 
     from .models import Item
     admin.site.register(Item)

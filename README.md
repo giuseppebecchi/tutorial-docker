@@ -8,7 +8,8 @@ Tutorial di base per docker
 
 https://docs.docker.com/get-docker/
 Verificare che sia installato:
-docker -v
+
+    docker -v
 
 2) Installare il pacchetto docker-compose:
 
@@ -30,6 +31,12 @@ https://hub.docker.com/
 Maggiori approfondimenti:
 https://www.slideshare.net/valix85/introduzione-a-docker-maggio-2017-ita?qid=2689113a-d449-4eb8-be13-fc6a21c6f3d6&v=&b=&from_search=4
 
+Eseguire il container dell'immagine Docker "Hello World"
+
+Eseguire il container dell'immagine Docker "Nginx" e notare il processo di aggiunta delle pagine web.
+
+Task da eseguire:
+- aggiungere pagine web e fare nuovo deploy.
 
 ### 3) realizzazione di un container con software python e sharing attraverso hub.docker.com
 https://docs.docker.com/language/python/
@@ -92,6 +99,15 @@ Importante per personalizzare le password/key e per configurare il comportamento
 - docker run -p 5020:5000 ciuster/python-docker
 
 
+File esercitazione 3b_container_python_libs
+
+Task da eseguire:
+- analizzare dockerfile
+- docker build --tag python-docker-libs .
+- docker run -p 5030:5000 python-docker-libs
+- aprire un browser e andare su http://localhost:5030/
+
+Questo progetto è simile al precedente, ma aggiunge una libreria esterna (OpenCV) e installa con apt-get le dipendenze; inoltre il codice della app Flask adesso è separato da Dockerfile..
 
 
 ##Esercitazione che potete provare a fare:
@@ -155,49 +171,56 @@ Vengono creati:
 Editare composeexample/settings.py
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_NAME'),
-        'USER': os.environ.get('POSTGRES_USER'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        'HOST': 'db',
-        'PORT': 5432,
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ.get('POSTGRES_NAME'),
+            'USER': os.environ.get('POSTGRES_USER'),
+            'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+            'HOST': 'db',
+            'PORT': 5432,
+        }
     }
-}
 
 
 
 #avviare il server
-docker-compose up -d
+
+    docker-compose up -d
 
 #verificare che sia funzionante
 http://localhost:8000/
 
 
 #eseguire un comando dall'interno del container
-docker exec -it 5_stack_django_web_1 bash
-python manage.py help
-exit
+
+    docker exec -it 5_stack_django-web-1 bash
+    python manage.py help
+    exit
 
 #eseguire un comando dall'esterno sul container con docker exec
-docker exec 5_stack_django_web_1 python manage.py help
+
+    docker exec 5_stack_django-web-1 python manage.py help
 
 
 #eseguire un comando con docker-compose
-docker-compose exec web python manage.py help
+
+    docker-compose exec web python manage.py help
 
 
 #eseguire il comando migrate per inizializzare il DB con le tabelle di base di python
-docker exec 5_stack_django_web_1 python manage.py migrate
+
+    docker exec 5_stack_django-web-1 python manage.py migrate
 
 
 #creare un utente admin
-docker exec -it 5_stack_django_web_1 python manage.py createsuperuser
+
+    docker exec -it 5_stack_django-web-1 python manage.py createsuperuser
 
 
 #creare una APPLICATION dal nome "art"
-docker exec -it 5_stack_django_web_1 python manage.py startapp art
+
+    docker exec -it 5_stack_django-web-1 python manage.py startapp art
 
 -> viene creata la cartella art
 
@@ -216,23 +239,22 @@ docker exec -it 5_stack_django_web_1 python manage.py startapp art
 #creare un modello nel file art/models.py
 
     class Item(models.Model):
-        title = models.CharField(max_length = 150,null=True,blank=True)
-        code = models.CharField(max_length = 150,null=True,blank=True)
-        description = models.TextField(null=True,blank=True)
+        title = models.CharField(max_length=150, null=True, blank=True)
+        code = models.CharField(max_length=150, null=True, blank=True)
+        description = models.TextField(null=True, blank=True)
 
         def __str__(self):
             return str(self.title)
 
 #creare il file di migrazione ed effettuare la migrazione per creare le tabelle in DB
 
-docker exec -it 5_stack_django_web_1 python manage.py makemigrations
-
-docker exec -it 5_stack_django_web_1 python manage.py migrate
+    docker exec -it 5_stack_django-web-1 python manage.py makemigrations
+    docker exec -it 5_stack_django-web-1 python manage.py migrate
 
 verificare nell'adminer la creazione della nuova tabella
 
 
-# configurare l'area amministrativa per questo oggetto nel file art/admin.py
+#configurare l'area amministrativa per questo oggetto nel file art/admin.py
 
     from .models import Item
     admin.site.register(Item)
